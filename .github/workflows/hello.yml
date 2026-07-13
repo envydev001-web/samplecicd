@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Welcome Message
-        run: echo "Hello from GitHub Actions!"
+      - uses: actions/checkout@v4
+      - name: date
+        run: echo ${{ github.event_name }}
 
       - name: Print Current Directory
         run: pwd
