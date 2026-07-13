@@ -1,0 +1,22 @@
+name: Android CI
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubunto-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+
+      - name: setup java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Give Gradle permission
+        run: chmod +x ./gradlew
+      - name: Build debug apk
+        run: ./gradlew assembleDebug
